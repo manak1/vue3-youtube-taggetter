@@ -1,13 +1,17 @@
 <template>
-  <div class="w-full flex flex-col justify-center h-screen bg-secondary">
+  <div
+    class="w-full flex flex-col justify-center min-h-screen h-full bg-secondary"
+  >
     <Header />
-    <main class="flex-grow h-full">
-      <div class="flex items-center justify-center h-full">
+    <div class="flex-grow" />
+    <main class="h-full">
+      <div class="flex items-center justify-center h-full my-4">
         <Content>
           <slot />
         </Content>
       </div>
     </main>
+    <div class="flex-grow" />
     <Footer />
   </div>
 </template>

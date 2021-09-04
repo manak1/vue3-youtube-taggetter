@@ -11,7 +11,7 @@
       cursor-pointer
     "
   >
-    <p class="text-gray-700">{{ title }}</p>
+    <p class="text-xs sm:text-base text-gray-700">{{ title }}</p>
     <a href="#" class="ml-1" @click.prevent="onDelete(title)">
       <img class="w-4 h-4" src="@/assets/images/close.svg" alt="削除" />
     </a>
@@ -26,15 +26,10 @@
         type: String as PropType<string>,
         required: true,
       },
-      index: {
-        type: Number as PropType<number>,
-        required: true,
-      },
     },
     emits: ['onDelete'],
     setup(_, { emit }) {
       const onDelete = (title: string) => {
-        console.log(title)
         emit('onDelete', title)
       }
       return {

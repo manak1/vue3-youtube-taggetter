@@ -1,5 +1,5 @@
 <template>
-  <header class="w-full p-3 text-left">
+  <header class="hidden sm:block w-full p-3 text-left">
     <h1>Youtube Tagゲッター(｀・ω・´)</h1>
   </header>
 </template>

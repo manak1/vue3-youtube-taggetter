@@ -1,6 +1,21 @@
 <template>
-  <div class="w-3/5 px-6 pt-6 pb-10 mx-auto rounded-md bg-white shadow content">
-    <slot />
+  <div class="w-full px-2">
+    <div
+      class="
+        w-full
+        sm:w-3/5
+        px-6
+        pt-6
+        pb-10
+        mx-auto
+        rounded-md
+        bg-white
+        shadow
+        content
+      "
+    >
+      <slot />
+    </div>
   </div>
 </template>
 

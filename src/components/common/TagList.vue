@@ -1,14 +1,21 @@
 <template>
   <label class="text-sm font-bold text-gray-600">{{ label }}</label>
   <div class="tagList border p-4 mt-1">
-    <ul v-if="!isTagsEmpty" class="flex space-x-2">
-      <li v-for="(tag, index) in tags" :key="index" class="inline-block">
-        <Tag :title="tag.title" :index="index" @onDelete="onDelete" />
-      </li>
-    </ul>
-    <div v-if="isTagsEmpty">
-      <p class="text-gray-400 text-center">
-        現在表示できるタグはないよ(´・ω・`)
+    <template v-if="tags">
+      <ul v-if="!isTagsEmpty" class="flex flex-wrap gap-2 sm:gap-3">
+        <li v-for="(tag, index) in tags" :key="index" class="inline-block">
+          <Tag :title="tag" @onDelete="onDelete" />
+        </li>
+      </ul>
+      <div v-if="isTagsEmpty">
+        <p class="text-xs sm:text-base text-gray-400">
+          タグが見つからなかったよ(´・ω・`)
+        </p>
+      </div>
+    </template>
+    <div v-else>
+      <p class="text-xs sm:text-base text-gray-400">
+        URLを入力してね(｀・ω・´)
       </p>
     </div>
   </div>
@@ -18,15 +25,13 @@
   import { defineComponent, PropType, computed } from 'vue'
   import Tag from '@/components/common/Tag.vue'
 
-  import { Tag as TagType } from '../../types/index'
-
   export default defineComponent({
     components: {
       Tag,
     },
     props: {
       tags: {
-        type: Array as PropType<TagType[]>,
+        type: Array as PropType<string[]>,
         required: true,
       },
       label: {
