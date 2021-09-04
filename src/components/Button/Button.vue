@@ -4,7 +4,7 @@
     :class="disabledClass"
     :disabled="disabled"
   >
-    <p class="font-bold text-white">
+    <p class="text-sm sm:text-base font-bold text-white">
       {{ label }}
     </p>
   </button>
@@ -26,7 +26,7 @@
     },
     setup(props) {
       const disabledClass = computed(() =>
-        props.disabled ? 'pointer-none bg-gray-300' : 'bg-purple-500'
+        props.disabled ? 'pointer-events-none bg-gray-300' : 'bg-purple-500'
       )
       return {
         disabledClass,
