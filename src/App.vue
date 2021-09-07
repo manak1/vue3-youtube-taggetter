@@ -10,7 +10,7 @@
       />
       <Button
         label="タグを検索する"
-        :disabled="inProgress || isSameUrl"
+        :disabled="inProgress || isSameUrl || !form.url"
         @click.prevent="searchTags"
       />
     </form>
@@ -32,7 +32,7 @@
 
   import InputText from '@/components/input/InputText.vue'
   import TagList from '@/components/common/TagList.vue'
-  import Button from '@/components/Button/Button.vue'
+  import Button from '@/components/button/Button.vue'
   import HeaderFooterView from '@/layout/HeaderFooterView.vue'
 
   import { clipboardCopyText } from './utils/clipboard'
@@ -79,7 +79,10 @@
           throw error
         })
         lastFetchUrl.value = form.url
-        tags.value = sortByLength(tagList as string[])
+
+        !isNullOrUndefined(tagList)
+          ? (tags.value = sortByLength(tagList as string[]))
+          : (tags.value = [])
       }
 
       const onDeleteTag = (title: string) => {
