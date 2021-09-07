@@ -5,13 +5,12 @@
     </label>
     <div class="relative">
       <input
-        ref="inputRef"
-        :modelValue="modelValue"
+        :value="modelValue"
         :name="name"
         :placeholder="placeholder"
         class="text-sm sm:text-base rounded border w-full py-2 px-2 mt-1"
         autocomplete="off"
-        @input="onInput($event.target.value)"
+        @input="onInput"
       />
       <img
         class="
@@ -35,7 +34,7 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, PropType, ref } from 'vue'
+  import { defineComponent, PropType } from 'vue'
 
   export default defineComponent({
     name: 'InputText',
@@ -59,17 +58,14 @@
     },
     emits: ['update:modelValue', 'clear'],
     setup(_, { emit }) {
-      const inputRef = ref<HTMLInputElement>()
-      const onInput = (value: string) => {
-        emit('update:modelValue', value)
+      const onInput = (event: Event) => {
+        const target = event.target as HTMLInputElement
+        emit('update:modelValue', target.value)
       }
       const onClear = () => {
-        if (!inputRef.value) return
         emit('update:modelValue', '')
-        inputRef.value.value = ''
       }
       return {
-        inputRef,
         onInput,
         onClear,
       }
