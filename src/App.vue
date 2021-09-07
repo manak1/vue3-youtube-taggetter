@@ -32,7 +32,7 @@
 
   import InputText from '@/components/input/InputText.vue'
   import TagList from '@/components/common/TagList.vue'
-  import Button from '@/components/button/Button.vue'
+  import Button from '@/components/Button/Button.vue'
   import HeaderFooterView from '@/layout/HeaderFooterView.vue'
 
   import { clipboardCopyText } from './utils/clipboard'
