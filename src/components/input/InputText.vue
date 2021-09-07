@@ -15,9 +15,9 @@
       <img
         class="
           absolute
-          w-3
-          h-3
-          sm:w-4 sm:h-4
+          w-4
+          h-4
+          sm:w-5 sm:h-5
           right-2
           sm:right-3
           top-4
